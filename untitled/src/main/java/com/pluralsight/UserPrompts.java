@@ -53,10 +53,16 @@ public class UserPrompts {
                 break;
             } else if (uInput.equalsIgnoreCase("B")) {
                 deliStore.displayAvailableDrinks();
+                int userNumberInput = scan.nextInt();
+                scan.nextLine();
+                System.out.println("What size drink? small, medium or large?");
+                String userSizeInput = scan.nextLine().trim();
+
                 addDrink();
                 break;
             } else if (uInput.equalsIgnoreCase("C")) {
-                //addChips()
+                deliStore.displayAvailableChips();
+                //addChips();
             }
         }
     }

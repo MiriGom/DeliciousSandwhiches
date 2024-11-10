@@ -2,19 +2,15 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 
-public class Drink {
-  private String name;
-  private String size;
-  private double price;
+public class Drink extends StoreItem{
+
 
   public Drink(String name){
-      this.name = name;
+      super(name);
   }
 
   public Drink(String name, String size, double price) {
-      this.name = name;
-      this.size = size;
-      this.price = price;
+      super(name, price, size);
   }
 
     public String getName() {
