@@ -5,4 +5,7 @@ import java.util.List;
 
 public class PointOfSales {
 
+    public void addItemToOrder(){
+
+    }
 }

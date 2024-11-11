@@ -24,9 +24,6 @@ public class Chip extends StoreItem {
 
     @Override
     public String toString() {
-        return "Chip{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return String.format("%s %.2f", name, price);
     }
 }
