@@ -1,0 +1,124 @@
+@startuml
+class com.pluralsight.Drink {
++ String getName()
++ String getSize()
++ double getPrice()
++ void setPrice(double)
++ String toString2()
++ void setPriceBasedOnSize(String)
++ void setSize(String)
++ String toString()
+}
+
+class com.pluralsight.FileManager {
+}
+class com.pluralsight.Chip {
++ String getName()
++ double getPrice()
++ void setPrice()
++ String toString()
+}
+
+class com.pluralsight.Main {
++ {static} void main(String[])
+}
+
+interface com.pluralsight.Priceable {
+~ double getPrice()
+}
+
+class com.pluralsight.DeliStore {
+~ {static} Scanner scan
+~ {static} Sandwich s
+~ {static} HashMap<Integer,Chip> availableChips
+~ {static} ArrayList<StoreItem> order
+~ {static} HashMap<Integer,Drink> availableDrinks
++ void displayAvailableDrinks()
++ void displayAvailableChips()
++ void displayAvailableToppings()
++ void displaySides()
++ void displayAvailableSauces()
+}
+
+
+class com.pluralsight.PointOfSales {
+~ {static} List<Object> orderList
++ void addItemToOrder(Object)
++ void displayOrder()
+}
+
+
+class com.pluralsight.Sandwich {
+- boolean toasted
+- ArrayList<RegularTopping> regularToppings
+- ArrayList<Sauce> sauces
+- ArrayList<Side> sides
++ void setPriceBasedOnSize(String)
++ void setSize(String)
+}
+
+
+enum com.pluralsight.Sauce {
++  MAYO
++  KETCHUP
++  RANCH
++  THOUSAND_ISLANDS
++  VINAIGRETTE
+}
+
+enum com.pluralsight.Side {
++  AU_JUS
++  SIDE_SALAD
+}
+
+enum com.pluralsight.RegularTopping {
++  LETTUCE
++  PEPPERS
++  ONIONS
++  TOMATOES
++  JALEPENOS
++  CUCUMBERS
++  PICKLES
++  GUACAMOLE
++  MUSHROOMS
+}
+
+class com.pluralsight.Meat {
+~ boolean extra
+}
+
+abstract class com.pluralsight.StoreItem {
+# String name
+# double price
+# String size
++ String getName()
++ double getPrice()
++ String getSize()
++ void setPrice(double)
+}
+
+
+class com.pluralsight.UserPrompts {
+~ {static} PointOfSales pos
+~ {static} Scanner scan
++ void userInterface()
++ void getHomePage()
++ void orderPrompt(DeliStore)
++ void confirmAdd(Object)
++ void customizeSandwich(DeliStore)
+}
+
+
+class com.pluralsight.Cheese {
+}
+
+
+com.pluralsight.Priceable <|.. com.pluralsight.Drink
+com.pluralsight.StoreItem <|-- com.pluralsight.Drink
+com.pluralsight.Priceable <|.. com.pluralsight.Chip
+com.pluralsight.StoreItem <|-- com.pluralsight.Chip
+com.pluralsight.StoreItem <|-- com.pluralsight.Sandwich
+com.pluralsight.Priceable <|.. com.pluralsight.Meat
+com.pluralsight.StoreItem <|-- com.pluralsight.Meat
+com.pluralsight.StoreItem <|-- com.pluralsight.Cheese
+@enduml

@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 //2. terminal displays homepage
 public class UserPrompts {
+    static PointOfSales pos = new PointOfSales();
     static Scanner scan = new Scanner(System.in);
     public void userInterface(){
         getHomePage();
@@ -44,6 +45,7 @@ public class UserPrompts {
                     A) CUSTOMIZE A SANDWICH
                     B) ADD A DRINK
                     C) ADD A BAG OF CHIPS
+                    D) CHECKOUT
                     """);
             String uInput = scan.nextLine().toUpperCase().trim();
             if (uInput.equalsIgnoreCase("A")) {
@@ -72,16 +74,18 @@ public class UserPrompts {
                     Chip selectedChip = DeliStore.availableChips.get(userSelect);
                     confirmAdd(selectedChip);
                 }
+            }else if (uInput.equalsIgnoreCase("D")) {
+                pos.displayOrder();
             }
+
         }
     }
-    public void confirmAdd(Object o) {
-        PointOfSales pos = new PointOfSales();
+    public void confirmAdd(Priceable item) {
 
-        System.out.println("would you like to add " + o + " to your order?");
+        System.out.println("would you like to add " + item + " to your order?");
         String userInput = scan.nextLine();
         if (userInput.equalsIgnoreCase("yes")) {
-            pos.addItemToOrder(o);
+            pos.addItemToOrder(item);
 
         }
 

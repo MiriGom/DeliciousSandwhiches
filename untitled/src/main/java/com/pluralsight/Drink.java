@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Drink extends StoreItem{
+public class Drink extends StoreItem implements Priceable{
 
 
   public Drink(String name){
@@ -53,6 +53,6 @@ public class Drink extends StoreItem{
     }
     @Override
     public String toString() {
-      return String.format("%s %s %.2f", size, name, price);
+      return String.format("%s %s $%.2f", size, name, price);
     }
 }
