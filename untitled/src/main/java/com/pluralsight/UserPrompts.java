@@ -1,9 +1,5 @@
 package com.pluralsight;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Map;
 import java.util.Scanner;
 
 
@@ -54,13 +50,18 @@ public class UserPrompts {
                 customizeSandwich(deliStore);
                 break;
             } else if (uInput.equalsIgnoreCase("B")) {
+                Drink drink = new Drink("", "");
                 deliStore.displayAvailableDrinks();
                 int userNumberInput = scan.nextInt();
                 scan.nextLine();
                 System.out.println("What size drink? small, medium or large?");
-                String userSizeInput = scan.nextLine().trim();
+                String userInputSize = scan.nextLine().trim();
 
-                //addDrink();
+                if (DeliStore.availableDrinks.containsKey(userNumberInput)) {
+                    Drink selectedDrink = DeliStore.availableDrinks.get(userNumberInput);
+                    selectedDrink.setSize(userInputSize);
+                    confirmAdd(selectedDrink);
+                }
                 break;
             } else if (uInput.equalsIgnoreCase("C")) {
                 System.out.println("Select a bag of Chips");
@@ -69,16 +70,21 @@ public class UserPrompts {
                 scan.nextLine();
                 if (DeliStore.availableChips.containsKey(userSelect)) {
                     Chip selectedChip = DeliStore.availableChips.get(userSelect);
-                    System.out.println("would you like to add " + selectedChip.getName() + " to your order?");
-                    String userInput = scan.nextLine();
-                    if (userInput.equalsIgnoreCase("yes")) {
-                        
-                    }
+                    confirmAdd(selectedChip);
                 }
-
-                //addChips();
             }
         }
+    }
+    public void confirmAdd(Object o) {
+        PointOfSales pos = new PointOfSales();
+
+        System.out.println("would you like to add " + o + " to your order?");
+        String userInput = scan.nextLine();
+        if (userInput.equalsIgnoreCase("yes")) {
+            pos.addItemToOrder(o);
+
+        }
+
     }
 
     public void customizeSandwich(DeliStore deliStore) {
@@ -98,8 +104,5 @@ public class UserPrompts {
         deliStore.displayAvailableSauces();
 
     }
-    public void choiceParser(String selection){
-        String[] userSelection = selection.split(",");
 
-    }
 }

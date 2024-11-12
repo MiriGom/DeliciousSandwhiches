@@ -10,6 +10,11 @@ public abstract class StoreItem {
    public StoreItem(String name) {
        this.name = name;
    }
+   public StoreItem(String name, String size) {
+       this.name = name;
+       this.size = size;
+
+   }
    public StoreItem(String name, double price) {
        this.name = name;
        this.price = price;

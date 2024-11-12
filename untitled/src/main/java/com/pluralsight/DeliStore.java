@@ -10,17 +10,15 @@ public class DeliStore {
     static Sandwich s = new Sandwich("");
     static HashMap<Integer, Chip> availableChips =  new HashMap<>();
     static ArrayList <StoreItem> order = new ArrayList<>();
-    ArrayList <Drink> availableDrinks = new ArrayList<>();
+    static HashMap<Integer, Drink> availableDrinks = new HashMap();
   //  ArrayList <PremiumTopping> premiumToppings = new ArrayList<>();
 
 
     public DeliStore() {
-        availableDrinks = new ArrayList<>();
-       // HashMap <Integer, Chip> availableChips = new HashMap<>();
 
-        availableDrinks.add(new Drink("Fanta"));
-        availableDrinks.add(new Drink("Coca Cola"));
-        availableDrinks.add(new Drink("Sprite"));
+        availableDrinks.put(1, new Drink("Fanta"));
+        availableDrinks.put(2, new Drink("Coca Cola"));
+        availableDrinks.put(3, new Drink("Sprite"));
 
         availableChips.put(1, new Chip("Lay's"));
         availableChips.put(2, new Chip("Doritos"));
@@ -30,9 +28,11 @@ public class DeliStore {
     // Storeitems looping through and displaying their available items lists.
     public void displayAvailableDrinks() {
         System.out.println("Drink Options");
-        for (int i = 0; i < availableDrinks.size(); i++)
-            System.out.println((i + 1) + ") " + availableDrinks.get(i));
+        for (int i = 1; i <= availableDrinks.size(); i++) {
+            Drink drink = availableDrinks.get(i);
+            System.out.println(i + ") " + drink.getName());
         }
+    }
 
     public void displayAvailableChips() {
         System.out.println("Chip Options");
@@ -56,16 +56,6 @@ public class DeliStore {
     public void displayAvailableSauces(){
         for (Sandwich.Sauce sauce : Sandwich.Sauce.values()) {
             System.out.println((sauce.ordinal() + 1) + ") " + sauce.name()) ;
-        }
-    }
-    public void selectItem(int chipIndex) {
-        if (availableChips.containsKey(chipIndex)) {
-            Chip chipSelected = availableChips.get(chipIndex);
-            System.out.println("add " + chipSelected.getName() + " chips to your order?");
-            String userAnswer = scan.nextLine();
-            if (userAnswer.equalsIgnoreCase("yes")) {
-
-            } else return;
         }
     }
 
